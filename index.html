@@ -29,7 +29,7 @@
     </table>
   </div>
   <script>
-    function randn_bm() {
+    function randnBm() {
       let u = 0, v = 0;
       while (u === 0) u = Math.random();
       while (v === 0) v = Math.random();
@@ -37,7 +37,7 @@
     }
     let result = {}, numbers = [];
     for (let i = 0; i < 10; i++) {            
-      numbers.push(randn_bm());
+      numbers.push(randnBm());
     }
     let values = [...new Set(numbers)];
     for (let i = 0; i < values.length; i++) {
