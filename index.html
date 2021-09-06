@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object gauss</title>
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  #resultTable {
+    border-collapse: collapse;
+  }
+
+  #resultTable td, #resultTable th {
+    border: 1px solid #333;
+    padding: 7px 14px;
+  }
+</style>
+</head>
+<body>
+  <div>
+    <h2>Элементы: <span id="elem"></span></h2>
+    <table id="resultTable">
+      <thead><th>Элемент</th><th>Вхождения</th></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+  <script>
+    function randnBm() {
+      let u = 0, v = 0;
+      while (u === 0) u = Math.random();
+      while (v === 0) v = Math.random();
+      return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v) * 2 | 0;
+    }
+    let result = {}, numbers = [];
+    for (let i = 0; i < 10; i++) {            
+      numbers.push(randnBm());
+    }
+    let values = [...new Set(numbers)];
+    for (let i = 0; i < values.length; i++) {
+      let counter = numbers.filter(e => e === values[i]).length;
+      result[values[i]] = counter;
+    }
+    let tableBody = document.getElementById('tableBody');
+    let tableContent = '';
+    for (const key in result) {
+      tableContent+=(`<tr><td>${key}: </td><td>${result[key]}</td></tr>`);
+    }
+    tableBody.innerHTML = tableContent;
+    elem.innerHTML = `<td>${numbers}</td>`;
+  </script>
+</body>
+</html>
